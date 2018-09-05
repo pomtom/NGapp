@@ -1,0 +1,33 @@
+  <table>
+  <thead>
+    <tr>
+      <th colspan="2">
+        Employee Details
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>{{name}}</th>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <th>{{address}}</th>
+    </tr>
+    <tr *ngIf="showDeaatils">
+      <th>Age</th>
+      <th>{{age}}</th>
+    </tr>
+    <tr *ngIf="showDeaatils">
+      <th>Phone</th>
+      <th>{{phone}}</th>
+    </tr>
+  </tbody>
+</table>
+<button (click)="toggleDetails()">{{showDeaatils ? "Hide" : "Show"}} Details</button>
+<br><br>
+
+<input type="text" [(ngModel)]="displayTwoWayDataBinding">
+<br/> You Have enterred text is : {{displayTwoWayDataBinding}}
+

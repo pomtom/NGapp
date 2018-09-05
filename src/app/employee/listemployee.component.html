@@ -1,0 +1,30 @@
+<app-employeecount [All]="GetAllEmployeeCount()" [Male]="GetMaleEmployeeCount()" [FeMale]="GetFeMaleEmployeeCount()"
+  (countRadioButtonSelectionChanges)="OnEmployeeCountRadioButtonChanged($event)">
+</app-employeecount>
+
+<div id="div1" style="float: left;">
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>BirthDate</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let emp of emplist">
+        <tr *ngIf="selectedEmployeeCountRadioButton=='All' || selectedEmployeeCountRadioButton==emp.gender">
+          <td>{{emp.Id}}</td>
+          <td>{{emp.name}}</td>
+          <td>{{emp.age}}</td>
+          <td>{{emp.salary}}</td>
+          <td>{{emp.birtdate}}</td>
+          <td>{{emp.gender}}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
