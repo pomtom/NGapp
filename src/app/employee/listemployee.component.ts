@@ -23,7 +23,7 @@ export class ListEmployeeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.emplist = this._empserivce.GetAllEmployee();
+        this.emplist = this._empserivce.GetMockEmployee();
     }
 
     GetAllEmployeeCount(): number {

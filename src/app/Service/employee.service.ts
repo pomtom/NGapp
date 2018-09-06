@@ -11,7 +11,7 @@ export class EmployeeService implements Iemployeeservice {
 
   constructor() { }
 
-  public GetAllEmployee(): IEmployee[] {
+  public GetMockEmployee(): IEmployee[] {
     return [
       { Id: 1, name: 'pramod', age: 30, salary: 99000, birtdate: '08/3/1992', gender: 'Male' },
       { Id: 2, name: 'kavita', age: 30, salary: 250000, birtdate: '09/3/1992', gender: 'FeMale' },
