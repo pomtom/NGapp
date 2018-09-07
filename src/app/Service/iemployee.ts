@@ -1,8 +1,8 @@
 export interface IEmployee {
     Id: number;
-    name: string;
-    age: number;
-    salary: number;
-    birtdate: string;
-    gender: string;
+    Name: string;
+    Age: number;
+    Salary: number;
+    BirthDate: string;
+    Gender: string;
 }

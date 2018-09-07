@@ -23,7 +23,9 @@ export class ListEmployeeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.emplist = this._empserivce.GetMockEmployee();
+        // this.emplist = this._empserivce.GetMockEmployee();
+        this._empserivce.GetAllEmployee().subscribe((a) => this.emplist = a);
+
     }
 
     GetAllEmployeeCount(): number {
@@ -31,11 +33,11 @@ export class ListEmployeeComponent implements OnInit {
     }
 
     GetMaleEmployeeCount(): number {
-        return this.emplist.filter(a => a.gender === 'Male').length;
+        return this.emplist.filter(a => a.Gender === 'Male').length;
     }
 
     GetFeMaleEmployeeCount(): number {
-        return this.emplist.filter(a => a.gender === 'FeMale').length;
+        return this.emplist.filter(a => a.Gender === 'FeMale').length;
     }
 
 }

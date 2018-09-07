@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IEmployee } from 'src/app/Service/iemployee';
 import { Iemployeeservice } from './iemployeeservice';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +12,31 @@ import { Iemployeeservice } from './iemployeeservice';
 @Injectable()
 export class EmployeeService implements Iemployeeservice {
 
-  constructor() { }
+
+  constructor(private _http: Http) { }
 
   public GetMockEmployee(): IEmployee[] {
     return [
-      { Id: 1, name: 'pramod', age: 30, salary: 99000, birtdate: '08/3/1992', gender: 'Male' },
-      { Id: 2, name: 'kavita', age: 30, salary: 250000, birtdate: '09/3/1992', gender: 'FeMale' },
-      { Id: 3, name: 'sachin', age: 28, salary: 55000, birtdate: '10/3/1992', gender: 'Male' },
-      { Id: 4, name: 'deepak', age: 25, salary: 75000, birtdate: '11/3/1992', gender: 'Male' },
-      { Id: 5, name: 'ketki', age: 21, salary: 35000, birtdate: '12/3/1992', gender: 'FeMale' },
-      { Id: 6, name: 'rushabh', age: 27, salary: 25000, birtdate: '10/3/1992', gender: 'Male' },
-      { Id: 7, name: 'Trusha', age: 23, salary: 22000, birtdate: '09/3/1992', gender: 'FeMale' },
-      { Id: 8, name: 'Kedar', age: 29, salary: 22000, birtdate: '08/3/1992', gender: 'Male' },
-      { Id: 9, name: 'Kranti', age: 20, salary: 22000, birtdate: '07/3/1992', gender: 'FeMale' },
-      { Id: 10, name: 'Shaila', age: 15, salary: 220, birtdate: '06/3/1992', gender: 'FeMale' },
-      { Id: 11, name: 'James', age: 39, salary: 5000, birtdate: '06/3/1985', gender: 'Male' }
+      { Id: 1, Name: 'pramod', Age: 30, Salary: 99000, BirthDate: '08/3/1992', Gender: 'Male' },
+      { Id: 2, Name: 'kavita', Age: 30, Salary: 250000, BirthDate: '09/3/1992', Gender: 'FeMale' },
+      { Id: 3, Name: 'sachin', Age: 28, Salary: 55000, BirthDate: '10/3/1992', Gender: 'Male' },
+      { Id: 4, Name: 'deepak', Age: 25, Salary: 75000, BirthDate: '11/3/1992', Gender: 'Male' },
+      { Id: 5, Name: 'ketki', Age: 21, Salary: 35000, BirthDate: '12/3/1992', Gender: 'FeMale' },
+      { Id: 6, Name: 'rushabh', Age: 27, Salary: 25000, BirthDate: '10/3/1992', Gender: 'Male' },
+      { Id: 7, Name: 'Trusha', Age: 23, Salary: 22000, BirthDate: '09/3/1992', Gender: 'FeMale' },
+      { Id: 8, Name: 'Kedar', Age: 29, Salary: 22000, BirthDate: '08/3/1992', Gender: 'Male' },
+      { Id: 9, Name: 'Kranti', Age: 20, Salary: 22000, BirthDate: '07/3/1992', Gender: 'FeMale' },
+      { Id: 10, Name: 'Shaila', Age: 15, Salary: 220, BirthDate: '06/3/1992', Gender: 'FeMale' },
+      { Id: 11, Name: 'James', Age: 39, Salary: 5000, BirthDate: '06/3/1985', Gender: 'Male' }
 
     ];
   }
+
+  GetAllEmployee(): Observable<IEmployee[]> {
+    return this._http.get('http://zixer.azurewebsites.net/api/values/get')
+      .map((resp: Response) => <IEmployee[]>resp.json());
+  }
+
+
 
 }
