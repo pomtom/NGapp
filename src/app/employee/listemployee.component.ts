@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { IEmployee } from '../Service/iemployee';
 import { EmployeeService } from '../Service/employee.service';
+import { error } from 'util';
 
 @Component({
     selector: 'app-list-employee',
@@ -14,9 +15,9 @@ export class ListEmployeeComponent implements OnInit {
 
     emplist: IEmployee[];
     selectedEmployeeCountRadioButton: string = 'All';
-    constructor(private _empserivce: EmployeeService) {
+    statusMessage: string;
 
-    }
+    constructor(private _empserivce: EmployeeService) { }
 
     OnEmployeeCountRadioButtonChanged(selectedRadioButtonValue: string): void {
         this.selectedEmployeeCountRadioButton = selectedRadioButtonValue;
@@ -24,7 +25,9 @@ export class ListEmployeeComponent implements OnInit {
 
     ngOnInit() {
         // this.emplist = this._empserivce.GetMockEmployee();
-        this._empserivce.GetAllEmployee().subscribe((a) => this.emplist = a);
+        this._empserivce.GetAllEmployee().subscribe((a) => this.emplist = a,
+            // tslint:disable-next-line:no-shadowed-variable
+            (error) => { this.statusMessage = 'Service Probllem'; });
 
     }
 

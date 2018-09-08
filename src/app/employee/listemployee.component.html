@@ -1,9 +1,9 @@
-<app-employeecount *ngIf="emplist"  [All]="GetAllEmployeeCount()" [Male]="GetMaleEmployeeCount()" [FeMale]="GetFeMaleEmployeeCount()"
+<app-employeecount *ngIf="emplist" [All]="GetAllEmployeeCount()" [Male]="GetMaleEmployeeCount()" [FeMale]="GetFeMaleEmployeeCount()"
   (countRadioButtonSelectionChanges)="OnEmployeeCountRadioButtonChanged($event)">
 </app-employeecount>
 
 <div id="div1" style="float: left;">
-  <table>
+  <table >
     <thead>
       <tr>
         <th>Id</th>
@@ -25,6 +25,11 @@
           <td>{{emp.Gender}}</td>
         </tr>
       </ng-container>
+      <tr *ngIf="!emplist">
+        <td colspan="6">
+          <img style="height:50px; width:50px" src="/src/app/preloader.gif">
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
