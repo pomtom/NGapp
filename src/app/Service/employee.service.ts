@@ -40,6 +40,12 @@ export class EmployeeService implements Iemployeeservice {
             .catch(this.HandleError);
     }
 
+    GetAllEmployeeByID(empid: number): Observable<IEmployee> {
+        return this._http.get('http://zixer.azurewebsites.net/api/values/get/id=' + empid)
+            .map((resp: Response) => <IEmployee>resp.json())
+            .catch(this.HandleError);
+    }
+
     HandleError(err: Response) {
         console.log(err);
         return Observable.throw(err);

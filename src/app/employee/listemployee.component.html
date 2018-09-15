@@ -3,7 +3,7 @@
 </app-employeecount>
 
 <div id="div1" style="float: left;">
-  <table >
+  <table>
     <thead>
       <tr>
         <th>Id</th>
@@ -17,7 +17,7 @@
     <tbody>
       <ng-container *ngFor="let emp of emplist">
         <tr *ngIf="selectedEmployeeCountRadioButton=='All' || selectedEmployeeCountRadioButton==emp.Gender">
-          <td>{{emp.Id}}</td>
+          <td><a [routerLink]="['/employee', emp.Id]" routerLinkActive="router-link-active">{{emp.Id}}</a></td>
           <td>{{emp.Name}}</td>
           <td>{{emp.Age}}</td>
           <td>{{emp.Salary}}</td>
@@ -25,7 +25,8 @@
           <td>{{emp.Gender}}</td>
         </tr>
       </ng-container>
-      <tr *ngIf="!emplist">
+      <tr *ngIf="
+              !emplist">
         <td colspan="6">
           <img style="height:50px; width:50px" src="/src/app/preloader.gif">
         </td>

@@ -1,7 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { IEmployee } from '../Service/iemployee';
 import { EmployeeService } from '../Service/employee.service';
-import { error } from 'util';
 
 @Component({
     selector: 'app-list-employee',
@@ -30,6 +29,7 @@ export class ListEmployeeComponent implements OnInit {
             (error) => { this.statusMessage = 'Service Probllem'; });
 
     }
+
 
     GetAllEmployeeCount(): number {
         return this.emplist.length;

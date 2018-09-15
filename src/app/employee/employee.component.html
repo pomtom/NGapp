@@ -1,4 +1,4 @@
-  <table>
+<table>
   <thead>
     <tr>
       <th colspan="2">
@@ -8,26 +8,27 @@
   </thead>
   <tbody>
     <tr>
-      <th>Name</th>
-      <th>{{name}}</th>
+      <th>Id</th>
+      <th>{{emph.Id}}</th>
     </tr>
     <tr>
-      <th>Address</th>
-      <th>{{address}}</th>
+      <th>Name</th>
+      <th>{{emph.Name}}</th>
     </tr>
-    <tr *ngIf="showDeaatils">
+    <tr>
       <th>Age</th>
-      <th>{{age}}</th>
+      <th>{{emph.Age}}</th>
     </tr>
     <tr *ngIf="showDeaatils">
-      <th>Phone</th>
-      <th>{{phone}}</th>
+      <th>Gender</th>
+      <th>{{emph.Gender}}</th>
+    </tr>
+    <tr *ngIf="showDeaatils">
+      <th>Salary</th>
+      <th>{{emph.Salary}}</th>
     </tr>
   </tbody>
 </table>
+
 <button (click)="toggleDetails()">{{showDeaatils ? "Hide" : "Show"}} Details</button>
 <br><br>
-
-<input type="text" [(ngModel)]="displayTwoWayDataBinding">
-<br/> You Have enterred text is : {{displayTwoWayDataBinding}}
-

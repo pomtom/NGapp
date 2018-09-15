@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../Service/employee.service';
+import { IEmployee } from '../Service/iemployee';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  templateUrl: './employee.component.html'
 })
+
 export class EmployeeComponent implements OnInit {
 
-  name = 'Pramod Lawate';
-  image = 'http://www.pragimtech.com/Images/Logo.JPG';
-  address = 'London';
-  age = 25;
-  phone = 79794651861583;
-
+  emph: IEmployee;
   showDeaatils = false;
 
 
-  displayTwoWayDataBinding = 'Tom';
+  constructor(private _empserivce: EmployeeService, private _activaterouter: ActivatedRoute) {
 
-  constructor() {
   }
 
   ngOnInit() {
+    // tslint:disable-next-line:prefer-const
+    let empid: number = this._activaterouter.snapshot.params['id'];
+    this.GetEmployeeById(empid);
+  }
+
+  GetEmployeeById(empid: number): void {
+    this._empserivce.GetAllEmployeeByID(empid).subscribe((a) => this.emph = a);
 
   }
 
@@ -29,3 +33,5 @@ export class EmployeeComponent implements OnInit {
     return this.showDeaatils = !this.showDeaatils;
   }
 }
+
+

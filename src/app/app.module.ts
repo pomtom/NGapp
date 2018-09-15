@@ -16,6 +16,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'listemployee', component: ListEmployeeComponent },
+  { path: 'employee/:id', component: EmployeeComponent },
+
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent }
 ];
